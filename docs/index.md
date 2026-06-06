@@ -657,6 +657,39 @@ aside: false
   color: var(--vp-c-brand-1);
   background: var(--vp-c-brand-soft);
 }
+
+
+/* ============================================
+   技能标签浮动动画
+   ============================================ */
+.skill-group p {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.skill-tag {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  border-radius: 6px;
+  background: var(--vp-c-bg-soft);
+  color: var(--vp-c-text-2);
+  font-size: 0.78rem;
+  font-weight: 500;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  animation: tagFloat 3s ease-in-out infinite;
+}
+
+.skill-tag:hover {
+  background: var(--vp-c-brand-soft);
+  color: var(--vp-c-brand-1);
+  transform: translateY(-3px) scale(1.05);
+}
+
+@keyframes tagFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
+}
 </style>
 
 <div class="resume-page">
@@ -816,27 +849,27 @@ aside: false
 <div class="skill-grid">
   <div class="skill-group">
     <h4>编程语言</h4>
-    <p>Python、Java、Shell 脚本</p>
+    <p><span class="skill-tag" style="animation-delay:0.00s">Python</span><span class="skill-tag" style="animation-delay:0.15s">Java</span><span class="skill-tag" style="animation-delay:0.30s">Shell 脚本</span></p>
   </div>
   <div class="skill-group">
     <h4>大模型 & 框架</h4>
-    <p>LangGraph、LangChain、Transformers、BERT、GPT、GLM、Qwen</p>
+    <p><span class="skill-tag" style="animation-delay:0.00s">LangGraph</span><span class="skill-tag" style="animation-delay:0.15s">LangChain</span><span class="skill-tag" style="animation-delay:0.30s">Transformers</span><span class="skill-tag" style="animation-delay:0.45s">BERT</span><span class="skill-tag" style="animation-delay:0.60s">GPT</span><span class="skill-tag" style="animation-delay:0.75s">GLM</span><span class="skill-tag" style="animation-delay:0.90s">Qwen</span></p>
   </div>
   <div class="skill-group">
     <h4>训练 / 推理</h4>
-    <p>Llama-Factory、Ollama、DeepSpeed、vLLM、LoRA、SFT、PPO、DPO、GRPO</p>
+    <p><span class="skill-tag" style="animation-delay:0.00s">Llama-Factory</span><span class="skill-tag" style="animation-delay:0.15s">Ollama</span><span class="skill-tag" style="animation-delay:0.30s">DeepSpeed</span><span class="skill-tag" style="animation-delay:0.45s">vLLM</span><span class="skill-tag" style="animation-delay:0.60s">LoRA</span><span class="skill-tag" style="animation-delay:0.75s">SFT</span><span class="skill-tag" style="animation-delay:0.90s">PPO</span><span class="skill-tag" style="animation-delay:1.05s">DPO</span><span class="skill-tag" style="animation-delay:1.20s">GRPO</span></p>
   </div>
   <div class="skill-group">
     <h4>后端 & 中间件</h4>
-    <p>Spring Boot、FastAPI、RabbitMQ、Redis、MySQL、Docker</p>
+    <p><span class="skill-tag" style="animation-delay:0.00s">Spring Boot</span><span class="skill-tag" style="animation-delay:0.15s">FastAPI</span><span class="skill-tag" style="animation-delay:0.30s">RabbitMQ</span><span class="skill-tag" style="animation-delay:0.45s">Redis</span><span class="skill-tag" style="animation-delay:0.60s">MySQL</span><span class="skill-tag" style="animation-delay:0.75s">Docker</span></p>
   </div>
   <div class="skill-group">
     <h4>前端</h4>
-    <p>Vue3、TypeScript、Element Plus、ECharts</p>
+    <p><span class="skill-tag" style="animation-delay:0.00s">Vue3</span><span class="skill-tag" style="animation-delay:0.15s">TypeScript</span><span class="skill-tag" style="animation-delay:0.30s">Element Plus</span><span class="skill-tag" style="animation-delay:0.45s">ECharts</span></p>
   </div>
   <div class="skill-group">
     <h4>证书 & 其他</h4>
-    <p>中级软件设计师、CET-6、RAG、多智能体、提示工程</p>
+    <p><span class="skill-tag" style="animation-delay:0.00s">中级软件设计师</span><span class="skill-tag" style="animation-delay:0.15s">CET-6</span><span class="skill-tag" style="animation-delay:0.30s">RAG</span><span class="skill-tag" style="animation-delay:0.45s">多智能体</span><span class="skill-tag" style="animation-delay:0.60s">提示工程</span></p>
   </div>
 </div>
 

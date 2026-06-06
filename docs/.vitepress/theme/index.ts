@@ -8,14 +8,18 @@ import CardTilt from './CardTilt.vue'
 import ScrollProgress from './ScrollProgress.vue'
 import BackToTop from './BackToTop.vue'
 import TerminalEasterEgg from './TerminalEasterEgg.vue'
+import PageLoader from './PageLoader.vue'
+import StarField from './StarField.vue'
 
 export default {
   extends: DefaultTheme,
   Layout: () => {
     return h(DefaultTheme.Layout, null, {
       'layout-bottom': () => [
+        h(PageLoader),
         h(ScrollProgress),
         h(BackToTop),
+        h(StarField),
         // MouseTrail only on desktop
         typeof window !== 'undefined' && window.matchMedia('(hover: hover) and (pointer: fine)').matches
           ? h(MouseTrail)
@@ -40,11 +44,9 @@ export default {
       let isDeleting = false
       let typewriterTimer: ReturnType<typeof setTimeout> | null = null
 
-      // Gradient colors for typewriter text
       const gradientColors = ['#6366f1', '#818cf8', '#8b5cf6', '#a78bfa', '#06b6d4']
 
       function createGradientSpan(text: string) {
-        // Wrap each character in a span with gradient color
         let html = ''
         for (let i = 0; i < text.length; i++) {
           const colorIdx = i % gradientColors.length
