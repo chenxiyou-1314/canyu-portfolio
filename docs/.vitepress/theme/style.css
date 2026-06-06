@@ -150,7 +150,7 @@
   font-size: clamp(2.5rem, 6vw, 4rem) !important;
   font-weight: 800 !important;
   letter-spacing: -0.03em !important;
-  line-height: 1.1 !important;
+  line-height: 1.4 !important;
   background: linear-gradient(135deg, var(--vp-c-brand-1), #8b5cf6, #06b6d4);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
