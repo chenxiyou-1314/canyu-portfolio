@@ -385,7 +385,7 @@ aside: false
 
 <!-- 顶部名片 -->
 <div class="hero-card">
-  <img src="/avatar.jpg" alt="avatar" class="hero-avatar" />
+  <div class="avatar-wrapper"><div class="avatar-ring"></div><img src="/avatar.jpg" alt="avatar" class="hero-avatar" /></div>
   <div class="hero-name">陈灿域</div>
   <div class="hero-title">AI算法 & 全栈开发 · 硕士研究生</div>
   <div class="hero-tags">

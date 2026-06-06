@@ -1,10 +1,18 @@
+import { h, onMounted } from 'vue'
 import DefaultTheme from 'vitepress/theme'
 import './style.css'
+import MouseTrail from './MouseTrail.vue'
+import ScrollReveal from './ScrollReveal.vue'
 
 export default {
   extends: DefaultTheme,
+  Layout: () => {
+    // Use VitePress DefaultTheme.Layout and inject effects
+    return h(DefaultTheme.Layout, null, {
+      'layout-bottom': () => [h(MouseTrail), h(ScrollReveal)]
+    })
+  },
   enhanceApp({ app }) {
-    // 打字机效果
     if (typeof window !== 'undefined') {
       const initTypewriter = () => {
         const el = document.querySelector('.VPHero .tagline') as HTMLElement
@@ -22,15 +30,13 @@ export default {
         }
         setTimeout(type, 400)
       }
-      
-      // 页面加载后执行
+
       if (document.readyState === 'complete') {
         initTypewriter()
       } else {
         window.addEventListener('load', initTypewriter)
       }
-      
-      // 路由切换后也执行
+
       const observer = new MutationObserver(() => {
         initTypewriter()
       })
