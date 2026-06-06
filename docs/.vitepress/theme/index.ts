@@ -7,6 +7,7 @@ import SkillRadar from './SkillRadar.vue'
 import CardTilt from './CardTilt.vue'
 import ScrollProgress from './ScrollProgress.vue'
 import BackToTop from './BackToTop.vue'
+import TerminalEasterEgg from './TerminalEasterEgg.vue'
 
 export default {
   extends: DefaultTheme,
@@ -20,13 +21,14 @@ export default {
           ? h(MouseTrail)
           : null,
         h(ScrollReveal),
-        h(CardTilt)
+        h(CardTilt),
+        h(TerminalEasterEgg)
       ]
     })
   },
   enhanceApp({ app }) {
     if (typeof window !== 'undefined') {
-      // ── Multi-phrase rotating typewriter ──
+      // ── Multi-phrase rotating typewriter with gradient color ──
       const phrases = [
         'AI算法 & 全栈开发 · 硕士研究生',
         'LangGraph 11-Agent 系统设计者',
@@ -38,8 +40,20 @@ export default {
       let isDeleting = false
       let typewriterTimer: ReturnType<typeof setTimeout> | null = null
 
+      // Gradient colors for typewriter text
+      const gradientColors = ['#6366f1', '#818cf8', '#8b5cf6', '#a78bfa', '#06b6d4']
+
+      function createGradientSpan(text: string) {
+        // Wrap each character in a span with gradient color
+        let html = ''
+        for (let i = 0; i < text.length; i++) {
+          const colorIdx = i % gradientColors.length
+          html += `<span style="color:${gradientColors[colorIdx]}">${text[i]}</span>`
+        }
+        return html
+      }
+
       function typewriterStep() {
-        // Support both #hero-typewriter (new layout) and .VPHero .tagline (fallback)
         const el = document.getElementById('hero-typewriter') as HTMLElement
           || document.querySelector('.VPHero .tagline') as HTMLElement
         if (!el) return
@@ -48,7 +62,8 @@ export default {
 
         if (!isDeleting) {
           charIndex++
-          el.textContent = currentPhrase.slice(0, charIndex)
+          const displayText = currentPhrase.slice(0, charIndex)
+          el.innerHTML = createGradientSpan(displayText)
           if (charIndex === currentPhrase.length) {
             typewriterTimer = setTimeout(() => {
               isDeleting = true
@@ -59,7 +74,8 @@ export default {
           typewriterTimer = setTimeout(typewriterStep, 70)
         } else {
           charIndex--
-          el.textContent = currentPhrase.slice(0, charIndex)
+          const displayText = currentPhrase.slice(0, charIndex)
+          el.innerHTML = createGradientSpan(displayText)
           if (charIndex === 0) {
             isDeleting = false
             phraseIndex = (phraseIndex + 1) % phrases.length
@@ -75,7 +91,7 @@ export default {
           || document.querySelector('.VPHero .tagline') as HTMLElement
         if (!el || el.dataset.typed === 'rotating') return
         el.dataset.typed = 'rotating'
-        el.textContent = ''
+        el.innerHTML = ''
         charIndex = 0
         phraseIndex = 0
         isDeleting = false

@@ -844,6 +844,7 @@ aside: false
 <div class="action-footer">
   <h3>想了解更多？</h3>
   <p>查看详细项目介绍与技术博客文章</p>
+  <p style="font-size:0.72rem;color:var(--vp-c-text-3);margin-top:0.3rem;opacity:0.6">💡 试试在页面输入 ↑↑↓↓←→←→BA</p>
   <div class="action-btns">
     <a href="/projects" class="btn-primary">📂 查看项目详情</a>
     <a href="/blog/" class="btn-secondary">📝 阅读技术博客</a>
