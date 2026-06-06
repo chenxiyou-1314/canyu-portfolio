@@ -7,7 +7,7 @@ export default defineConfig({
   base: '/',
 
   head: [
-    ['link', { rel: 'icon', href: '/avatar.jpg' }],
+    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }],
     ['meta', { name: 'theme-color', content: '#6366f1' }],
     ['meta', { name: 'msapplication-TileColor', content: '#6366f1' }],
   ],

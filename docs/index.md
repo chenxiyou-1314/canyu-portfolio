@@ -598,6 +598,65 @@ aside: false
     grid-template-columns: 1fr;
   }
 }
+
+
+/* ============================================
+   项目卡片链接
+   ============================================ */
+.project-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.project-card-link:hover .project-card {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(99, 102, 241, 0.12);
+  border-color: var(--vp-c-brand-soft);
+}
+
+/* ============================================
+   成就卡片光泽扫过
+   ============================================ */
+.achieve-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.achieve-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.06), transparent);
+  transition: left 0.5s ease;
+  pointer-events: none;
+}
+
+.achieve-card:hover::after {
+  left: 120%;
+}
+
+/* ============================================
+   手机号脱敏
+   ============================================ */
+.phone-reveal {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.82rem;
+  color: var(--vp-c-text-2);
+  transition: all 0.2s ease;
+  border-radius: 4px;
+  padding: 0.1rem 0.3rem;
+}
+
+.phone-reveal:hover {
+  color: var(--vp-c-brand-1);
+  background: var(--vp-c-brand-soft);
+}
 </style>
 
 <div class="resume-page">
@@ -616,7 +675,7 @@ aside: false
     <div class="hero-contact">
       <a href="https://github.com/chenxiyou-1314" target="_blank">🐙 GitHub</a>
       <a href="mailto:chencanyu@xxx.com">✉️ 邮箱</a>
-      <a href="tel:13829572603">📱 电话</a>
+      <span class="phone-reveal" onclick="this.innerHTML='📱 138-2957-2603'; this.style.cursor='default'" style="cursor:pointer">📱 点击查看电话</span>
       <span>📍 广东广州</span>
     </div>
   </div>
@@ -691,7 +750,7 @@ aside: false
 <!-- ═══════════════ 项目经历 - 双列 ═══════════════ -->
 <div class="section-title"><span class="icon">🚀</span>项目经历</div>
 <div class="project-grid">
-  <div class="project-card">
+  <a href="/projects#research-copilot" class="project-card-link"><div class="project-card">
     <h3>科研文献智能检索与综述生成系统</h3>
     <div class="tags">
       <span class="tag">LangGraph</span>
@@ -705,8 +764,8 @@ aside: false
       Critic 自回归质量闭环，Novelty Agent 四维 Gap 分析，Decomposition Agent 原子组件解构重组。
       Spring Boot + FastAPI 微服务，Docker Compose 一键部署。
     </p>
-  </div>
-  <div class="project-card">
+  </div></a>
+  <a href="/projects#ship30" class="project-card-link"><div class="project-card">
     <h3>Ship30: 细粒度船舶分布外检测基准</h3>
     <div class="tags">
       <span class="tag">OOD检测</span>
@@ -720,7 +779,7 @@ aside: false
       基于 ViT-B 实现 <strong>2ms/张</strong> 毫秒级推理。
       <strong>ICME 2026 二作</strong>，2项国家发明专利，COCO +21.9 mAP / LISA mIoU +10.7。
     </p>
-  </div>
+  </div></a>
 </div>
 
 <!-- ═══════════════ 科研成果 - 横向卡片 ═══════════════ -->

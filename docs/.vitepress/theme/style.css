@@ -1,9 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap');
+
 /* ============================================
    陈灿域博客 - 全局自定义样式
    ============================================ */
 
-/* ---------- 字体 ---------- */
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap');
+/* ---------- 全局 ---------- */
+html {
+  scroll-behavior: smooth;
+}
+
 
 :root {
   /* 基础字体 */
@@ -651,4 +656,18 @@
 
 .dark .resume-page::before {
   opacity: 0.15;
+}
+
+
+/* ============================================
+   项目卡片链接（全局）
+   ============================================ */
+.project-card-link {
+  text-decoration: none !important;
+  color: inherit !important;
+  border: none !important;
+}
+
+.project-card-link:hover {
+  border: none !important;
 }

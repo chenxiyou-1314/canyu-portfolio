@@ -14,6 +14,7 @@ onMounted(() => {
       '.timeline-item',
       '.project-card',
       '.skill-group',
+      '.achieve-card',
       '.achieve-item',
       '.hero-card',
       '.action-footer',

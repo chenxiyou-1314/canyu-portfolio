@@ -5,12 +5,23 @@ import MouseTrail from './MouseTrail.vue'
 import ScrollReveal from './ScrollReveal.vue'
 import SkillRadar from './SkillRadar.vue'
 import CardTilt from './CardTilt.vue'
+import ScrollProgress from './ScrollProgress.vue'
+import BackToTop from './BackToTop.vue'
 
 export default {
   extends: DefaultTheme,
   Layout: () => {
     return h(DefaultTheme.Layout, null, {
-      'layout-bottom': () => [h(MouseTrail), h(ScrollReveal), h(CardTilt)]
+      'layout-bottom': () => [
+        h(ScrollProgress),
+        h(BackToTop),
+        // MouseTrail only on desktop
+        typeof window !== 'undefined' && window.matchMedia('(hover: hover) and (pointer: fine)').matches
+          ? h(MouseTrail)
+          : null,
+        h(ScrollReveal),
+        h(CardTilt)
+      ]
     })
   },
   enhanceApp({ app }) {

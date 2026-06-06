@@ -1,6 +1,6 @@
 # 项目
 
-## 基于 Spring Boot + LangGraph 的科研文献智能分析与综述生成平台
+## 基于 Spring Boot + LangGraph 的科研文献智能分析与综述生成平台 {#research-copilot}
 
 **全栈微服务架构 · AI + Java + Vue3**
 
@@ -38,7 +38,7 @@
 
 ---
 
-## Ship30: 细粒度船舶分布外检测基准
+## Ship30: 细粒度船舶分布外检测基准 {#ship30}
 
 **广东省海洋经济发展专项资金项目**
 
