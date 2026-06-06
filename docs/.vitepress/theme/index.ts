@@ -25,19 +25,20 @@ export default {
       let phraseIndex = 0
       let charIndex = 0
       let isDeleting = false
-      let typewriterEl: HTMLElement | null = null
       let typewriterTimer: ReturnType<typeof setTimeout> | null = null
 
       function typewriterStep() {
-        if (!typewriterEl) return
+        // Support both #hero-typewriter (new layout) and .VPHero .tagline (fallback)
+        const el = document.getElementById('hero-typewriter') as HTMLElement
+          || document.querySelector('.VPHero .tagline') as HTMLElement
+        if (!el) return
 
         const currentPhrase = phrases[phraseIndex]
 
         if (!isDeleting) {
           charIndex++
-          typewriterEl.textContent = currentPhrase.slice(0, charIndex)
+          el.textContent = currentPhrase.slice(0, charIndex)
           if (charIndex === currentPhrase.length) {
-            // Pause before deleting
             typewriterTimer = setTimeout(() => {
               isDeleting = true
               typewriterStep()
@@ -47,7 +48,7 @@ export default {
           typewriterTimer = setTimeout(typewriterStep, 70)
         } else {
           charIndex--
-          typewriterEl.textContent = currentPhrase.slice(0, charIndex)
+          el.textContent = currentPhrase.slice(0, charIndex)
           if (charIndex === 0) {
             isDeleting = false
             phraseIndex = (phraseIndex + 1) % phrases.length
@@ -59,10 +60,10 @@ export default {
       }
 
       const initTypewriter = () => {
-        const el = document.querySelector('.VPHero .tagline') as HTMLElement
+        const el = document.getElementById('hero-typewriter') as HTMLElement
+          || document.querySelector('.VPHero .tagline') as HTMLElement
         if (!el || el.dataset.typed === 'rotating') return
         el.dataset.typed = 'rotating'
-        typewriterEl = el
         el.textContent = ''
         charIndex = 0
         phraseIndex = 0
@@ -76,20 +77,18 @@ export default {
         const skillSection = document.querySelector('.skill-grid')
         if (!skillSection || skillSection.dataset.radarInjected) return
 
-        // Insert radar before the skill grid
         const wrapper = document.createElement('div')
         wrapper.className = 'skill-radar-slot'
         wrapper.id = 'skill-radar-mount'
         skillSection.parentElement!.insertBefore(wrapper, skillSection)
         skillSection.dataset.radarInjected = 'true'
 
-        // Mount Vue component
         const { createApp } = require('vue')
-        const app = createApp(SkillRadar)
-        app.mount(wrapper)
+        const radarApp = createApp(SkillRadar)
+        radarApp.mount(wrapper)
       }
 
-      // ── Initialize on load ──
+      // ── Initialize ──
       const init = () => {
         initTypewriter()
         setTimeout(injectRadar, 800)
@@ -101,7 +100,6 @@ export default {
         window.addEventListener('load', init)
       }
 
-      // Re-init on route changes
       const observer = new MutationObserver(() => {
         setTimeout(init, 200)
       })
